@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var messageString = "You Are Great!";
+    @State private var messageString = "";
     var body: some View {
         VStack {
             Text(messageString)
@@ -17,9 +17,27 @@ struct ContentView: View {
                 .foregroundColor(.red)
                 .padding()
             
-            Button("Press Me") {
-                // This is the action performed when the button is pressed
-                messageString = "You Are Awesome!"
+            VStack {
+                HStack {
+                    /*
+                     * Trailing Closure Format
+                     */
+                    Button("Awesome") {
+                        messageString = "You Are Awesome!"
+                    }.buttonStyle(.borderedProminent)
+                    
+                    Button("Great") {
+                        // This is the action performed when the button is pressed
+                        messageString = "You Are Great!"
+                    }.buttonStyle(.borderedProminent)
+                }
+                
+                /*
+                 * Strandard Closure Format
+                 */
+                Button("Reset") {
+                    messageString = ""
+                }.buttonStyle(.bordered)
             }
         }
     }
